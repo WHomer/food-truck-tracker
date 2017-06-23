@@ -1,6 +1,6 @@
 firebase.initializeApp(config);
 
-function DBpush(){
+function DBpushTruck(){
   event.preventDefault();
 
     //an object to hold the info to be pushed
@@ -8,7 +8,20 @@ function DBpush(){
     };
 
     //push the object to the db
-    database.ref().push(obj);
+    database.ref("trucks/").push(obj);
+    //clear input boxes, if necessary
+    //$("#input").val("");
+}
+
+function DBpushPost(){
+  event.preventDefault();
+
+    //an object to hold the info to be pushed
+    var obj = {
+    };
+
+    //push the object to the db
+    database.ref("trucks/").push(obj);
     //clear input boxes, if necessary
     //$("#input").val("");
 }
