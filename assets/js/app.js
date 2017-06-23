@@ -1,4 +1,6 @@
 firebase.initializeApp(config);
+var database = firebase.database();
+
 var seedTruck = {
   truckName : "my Truck",
   websiteURL : "Google.com",
@@ -10,12 +12,12 @@ var seedTruck = {
 };
 
 var seedPost = {
-  
-}
-
+  postName: "this Truck",
+  postTime: null,
+  postLocation: null,
+};
 
 function DBpushTruck(){
-  event.preventDefault();
 
     //an object to hold the info to be pushed
     var truck = seedTruck;
@@ -26,15 +28,21 @@ function DBpushTruck(){
     //$("#input").val("");
 }
 
+database.ref("trucks/").once("value", function(snapshot) {
+  // do some stuff once
+  var test = _.map(snapshot.val(), "truckName");
+  console.log(test);
+});
+
+
+
 function DBpushPost(){
-  event.preventDefault();
 
     //an object to hold the info to be pushed
-    var obj = {
-    };
+    var post = seedPost;
 
     //push the object to the db
-    database.ref("trucks/").push(obj);
+    database.ref("posts/").push(post);
     //clear input boxes, if necessary
     //$("#input").val("");
 }
@@ -43,6 +51,8 @@ database.ref().on("child_added", function(snapshot) {
   //variables for easy access
   var obj = snapshot.val();
   var key = snapshot.key;
+  // var test = _.map(snapshot.val(), "truckName");
+  // console.log(test);
 }, function(errorObject){
   console.log("Errors handled: "+errorObject.code);
 });
