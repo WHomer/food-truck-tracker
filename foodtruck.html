@@ -26,7 +26,13 @@
 			
 			<!-- start of main content -->
 			<div class="row">
+				<div class="col-md-12">
+					<div id="map"></div>
+				</div>
+			</div>
 
+
+			<div class="row">
 				<!-- start of truck locations container -->
 				<div class="col-md-6">
 					<div class="panel panel-primary">
@@ -57,9 +63,24 @@
 									<label for="truck-cuisine">Truck Cuisine</label>
 									<input type="text" class="form-control" name="truck-cuisine">
 								</div>
+								<div class="form-group">
+									<label for="truck-date">Date</label>
+									<input type="text" class="form-control" name="truck-date">
+								</div>
 
 								<input type="submit" class="btn btn-lg btn-success" text="submit">
 							</form>
+
+							<div class="trucks-list">
+								<!-- list of search results goes here -->
+								<div class="truck-list">
+									<div class="truck-list-name">The Truck Stop</div>
+									<div class="truck-list-cuisine">Trucker Food</div>
+									<div class="truck-list-description">The ironic Food Truck that caters to only Truckers!!!</div>
+								</div>
+								<!-- list of search results ends here -->
+							</div>
+
 						</div>
 					</div>
 				<!-- end of search for truck -->
@@ -70,6 +91,10 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWvJ2fN3-hi3gwi_nGZvvMNMIv2WMz66c&callback=initMap"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/googleapi.js"></script>
 	</body>
 </html>

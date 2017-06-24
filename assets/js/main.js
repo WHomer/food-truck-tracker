@@ -11,11 +11,11 @@ var seedTruck = {
   posts : [],
 };
 
-var seedPost = {
-  postName: "this Truck",
-  postTime: null,
-  postLocation: null,
-};
+// var seedPost = {
+//   postName: "this Truck",
+//   postTime: null,
+//   postLocation: null,
+// };
 
 function DBpushTruck(){
 
@@ -45,16 +45,16 @@ function DBsearch(name){
 
 
 
-function DBpushPost(){
+// function DBpushPost(){
 
-    //an object to hold the info to be pushed
-    var post = seedPost;
+//     //an object to hold the info to be pushed
+//     var post = seedPost;
 
-    //push the object to the db
-    database.ref("posts/").push(post);
-    //clear input boxes, if necessary
-    //$("#input").val("");
-}
+//     //push the object to the db
+//     database.ref("posts/").push(post);
+//     //clear input boxes, if necessary
+//     //$("#input").val("");
+// }
 
 database.ref().on("child_added", function(snapshot) {
   //variables for easy access
