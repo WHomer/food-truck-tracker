@@ -2,7 +2,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 var seedTruck = {
-  truckName : "my Truck",
+  truckName : "my Truck2",
   websiteURL : "Google.com",
   twitterURL : "twitter.com",
   tags : ["food", "water"],
@@ -33,6 +33,15 @@ database.ref("trucks/").once("value", function(snapshot) {
   var test = _.map(snapshot.val(), "truckName");
   console.log(test);
 });
+
+function DBsearch(name){
+  database.ref("trucks/").once("value", function(snapshot) {
+    // do some stuff once
+    var test2 = _.map(snapshot.val(), "truckName");
+    var test = _.find(snapshot.val(), function(o) { return o.truckName == name; });
+    console.log(test);
+  });
+}
 
 
 
