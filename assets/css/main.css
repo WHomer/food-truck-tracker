@@ -8,3 +8,16 @@
   height: 500px;
   width:100%;
 }
+
+.overlay {
+   background:transparent; 
+   position:relative; 
+   width:640px;
+   height:480px; /* your iframe height */
+   top:480px;  /* your iframe height */
+   margin-top:-480px;  /* your iframe height */
+}
+
+.title {
+	text-align: center;
+}

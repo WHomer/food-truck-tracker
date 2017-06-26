@@ -39,7 +39,7 @@ function retrieveInput(){
   };
 }
 
-function DBsearch(name){
+function DBsearch(){
   database.ref("trucks/").once("value", function(snapshot) {
     // do some stuff once
     var validTrucks = [];
