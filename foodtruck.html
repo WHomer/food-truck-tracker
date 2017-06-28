@@ -19,15 +19,35 @@
 	    <!-- start of title -->
 	    <div class="jumbotron">
 	      <div class="container">
-	        <h1>Go Truck Yourself</h1>
+	        <h1 class="title">Go Truck Yourself</h1>
+	        <h3 class="title">The Food Truck Finding App</h3>
 	      </div>
 	    </div>
 			<!-- end of title -->
-			
+
 			<!-- start of main content -->
+
+
 			<div class="row">
+				<!-- Google Map -->
 				<div class="col-md-12">
-					<div id="map"></div>
+					<div class="panel panel-primary">
+						<div>
+						<!-- form inout for map search  -->
+							<form class="form-inline">
+							  <div class="form-group">
+							    <label for="map-truck-name">Truck Name</label>
+							    <input type="text" class="form-control" id="map-truck-name" placeholder="The Food Truck">
+							  </div>
+							  <div class="form-group">
+							    <label for="map-cuisine">Cuisine</label>
+							    <input type="email" class="form-control" id="map-cuisine" placeholder="Spicy">
+							  </div>
+							  <button type="submit" class="btn btn-default">Search</button>
+							</form>
+						</div>
+						<div id="map"></div>
+					</div>
 				</div>
 			</div>
 
@@ -40,9 +60,13 @@
 							Truck Locations
 						</div>
 						<div class="truck-locations-content">
-							<p>One Truck</p>
-							<p>Two Truck</p>
-							<p>Three Truck</p>
+							<!-- list of search results goes here -->
+							<div class="truck-location-list">
+								<div class="truck-location-name">The Truck Stop</div>
+								<div class="truck-location-cuisine">Trucker Food</div>
+								<div class="truck-location-location">0.3 Miles</div>
+							</div>
+							<!-- list of search results ends here -->
 						</div>
 					</div>
 				</div>
@@ -57,15 +81,15 @@
 							<form action="">
 								<div class="form-group">
 									<label for="truck-name">Truck Name: </label>
-									<input type="text" class="form-control" name="truck-name">
+									<input type="text" class="form-control" id="truck-name">
 								</div>
 								<div class="form-group">
 									<label for="truck-cuisine">Truck Cuisine</label>
-									<input type="text" class="form-control" name="truck-cuisine">
+									<input type="text" class="form-control" id="truck-cuisine">
 								</div>
 								<div class="form-group">
 									<label for="truck-date">Date</label>
-									<input type="text" class="form-control" name="truck-date">
+									<input type="text" class="form-control" id="truck-date">
 								</div>
 
 								<input type="submit" class="btn btn-lg btn-success" text="submit">
@@ -85,6 +109,36 @@
 					</div>
 				<!-- end of search for truck -->
 			</div>
+
+			<div class="row">
+				<!-- start of add truck -->
+				<div class="col-md-6">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Add Food Truck
+						</div>
+						<form action="">
+							<div class="form-group">
+								<label for="truck-name">Truck Name: </label>
+								<input type="text" class="form-control" id="add-truck-name">
+							</div>
+							<div class="form-group">
+								<label for="truck-cuisine">Truck Cuisine</label>
+								<input type="text" class="form-control" id="add-truck-cuisine">
+							</div>
+							<div class="form-group">
+								<label for="truck-date">Description</label>
+								<textarea class="form-control" id="add-truck-description" rows="5"></textarea>
+							</div>
+
+							<input type="submit" class="btn btn-lg btn-success" text="submit">
+						</form>
+					</div>
+				</div>
+				<!-- end of add truck -->
+			</div>
+
+
 			<!-- end of main content -->
 
     </div>
@@ -93,7 +147,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBby550rHR3mUSCYchrkgZR0FejERGGYk&callback=initMap"></script>
     <script src="assets/js/config.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/googleapi.js"></script>
 	</body>
