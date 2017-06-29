@@ -3,9 +3,11 @@ var database = firebase.database();
 
 var seedTruck = {
   truckName : "my Truck2",
+  truckCuisine : "noodles",
+  truckSavSweet: "sweet",
   websiteURL : "Google.com",
   twitterURL : "twitter.com",
-  truckCuisine : "noodles",
+  facebookURL: "facebook.com",
   truckSchedule : null,
   truckDescription: null,
   // lastSeen : null,
@@ -28,7 +30,7 @@ function DBpushTruck(){
       truckSchedule : null,
     };
     //push the object to the db
-    database.ref("trucks/").push(truck);
+    database.ref("trucks/").push(seedTruck);
 }
 
 function retrieveInput(){
@@ -89,6 +91,14 @@ function findOpenTrucks(truckOpen, truckClose){
   return validTrucks;
 }
 
+function loadFromJSON(){
+  for (var truckindex in truckjson){
+    // console.log(truckjson[truckindex]);
+    var truck = truckjson[truckindex];
+    database.ref("trucks/").push(truck);
+  }
+}
+
 database.ref().on("child_added", function(snapshot) {
   //variables for easy access
   var obj = snapshot.val();
@@ -96,8 +106,6 @@ database.ref().on("child_added", function(snapshot) {
 }, function(errorObject){
   console.log("Errors handled: "+errorObject.code);
 });
-
-
 
 
 
