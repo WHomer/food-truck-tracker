@@ -138,5 +138,10 @@ input {
 }
 
 .add-truck-panel {
-  padding-top: 15px;
+  padding-top: 20px;
+}
+
+*#add-first-street, #add-second-street, #add-date-seen, #add-time-seen {
+  width: 100%;
+  margin-top: 20px;
 }
