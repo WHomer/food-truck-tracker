@@ -92,7 +92,9 @@ function findOpenTrucks(truckOpen, truckClose){
 }
 
 function loadFromJSON(){
+  database.ref("trucks/").remove();
   for (var truckindex in truckjson){
+
     // console.log(truckjson[truckindex]);
     var truck = truckjson[truckindex];
     database.ref("trucks/").push(truck);
