@@ -2,15 +2,12 @@
 	box-sizing: border-box;
 }
 
-.jumbotron {
-  background-size: cover;
-}
-
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
   height: 500px;
   width:100%;
+  margin-top: 5px;
 }
 
 .overlay {
@@ -24,4 +21,95 @@
 
 .title {
 	text-align: center;
+}
+
+.title-container {
+	width: 100%;
+	padding: 0;
+}
+
+.logo {
+	width: 100%;
+	padding: 0;
+}
+
+.title{
+	margin-top: 0;
+	padding: 10px 0;
+	background-color: red;
+	color: #fff;
+}
+
+.row {
+	margin: 0 15px;
+}
+
+.trucks-list {
+	margin: 0;
+	width: 100%;
+	/*background-color: #9abcf4;*/
+	padding: 20px 0;
+	text-align: center;
+}
+
+.truck-list {
+	width: 200px;
+	margin: 10px  auto;
+	padding: 10px;
+	display: inline-block;
+}
+.truck-list-image-container {
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	background-color: orange;
+	position: relative;
+}
+.truck-list-image {
+	width: 80%;
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.truck-list-detail {
+	padding: 5px;
+	border: 2px solid #000;
+	border-radius: 10px;
+	background-color: #fff;
+	text-align: center;
+	margin-top: 5px;
+}
+.truck-list-name {
+	font-size: 1.2em;
+	font-weight: 700;
+}
+.search-button, .add-button {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+
+.lightbox {
+ 	display: none; /*tempory */
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: black;
+}
+
+.lightbox-truck {
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	width: 90%;
+	height: 70%;
+	max-width: 1200px;
 }
