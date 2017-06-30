@@ -22,12 +22,12 @@ function DBpushTruck(){
     // var truck = seedTruck;
     var truckName = ($("#add-truck-name").val()) ? $("#add-truck-name").val().trim(): null;
     var truckCuisine = ($("#add-truck-cuisine").val()) ? $("#add-truck-cuisine").val().trim(): null;
-    var truckDescription = ($("#add-truck-description").val()) ? $("#add-truck-description").val().trim(): null;
+    // var truckDescription = ($("#add-truck-description").val()) ? $("#add-truck-description").val().trim(): null;
     var truck = {
-      truckName: truckName,
-      truckCuisine: truckCuisine,
-      truckDescription: truckDescription,
-      truckSchedule : null,
+      "Truck Name (DBA)": truckName,
+      "Cuisine Type": truckCuisine,
+      // truckDescription: truckDescription,
+      // truckSchedule : null,
     };
     //push the object to the db
     database.ref("trucks/").push(seedTruck);
@@ -37,38 +37,51 @@ function retrieveInput(){
   //if there is text in the input field, the var will set to it. otherwise sets to false
   var truckName = ($("#truck-name").val()) ? $("#truck-name").val().trim().toLowerCase(): false;
   var truckCuisine = ($("#truck-cuisine").val()) ?  $("#truck-cuisine").val().trim().toLowerCase() : false;
-  var truckSchedule = ($("#input-truck-date").val()) ? $("#input-truck-date").val().trim().toLowerCase() : false;
+  // var truckSchedule = ($("#input-truck-date").val()) ? $("#input-truck-date").val().trim().toLowerCase() : false;
   return {
-    truckName:truckName,
-    truckCuisine:truckCuisine,
-    truckSchedule:truckSchedule,
+    "Truck Name (DBA)":truckName,
+    "Cuisine Type":truckCuisine,
+    // truckSchedule:truckSchedule,
   };
 }
 
 function DBsearch(){
+  var DB;
   database.ref("trucks/").once("value", function(snapshot) {
     // do some stuff once
     var validTrucks = [];
-    console.log(snapshot.val());
     inputObj = retrieveInput();
-    for (var key in snapshot.val()){
-      var truck = snapshot.val()[key];
-      console.log(truck);
-      //for each potential input
-      for (var property in inputObj){
-        //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
-        if(inputObj[property] && truck[property]){
-          //test if the property in the input section (inputObj) matches this property of the truck
-          if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
-            validTrucks.push(truck);
-            //if anything of the properties matches, exit the loop, since we already know there's a match
-            break;
+    var allBlank = true;
+    for (var prop in inputObj){
+      if(inputObj[prop]){
+        allBlank = false;
+        break;
+      }
+    }
+    if(allBlank){
+      DB = snapshot.val();
+    }
+    else{
+      for (var key in snapshot.val()){
+        var truck = snapshot.val()[key];
+        //for each potential input
+        for (var property in inputObj){
+          //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
+          if(inputObj[property] && truck[property]){
+            //test if the property in the input section (inputObj) matches this property of the truck
+            if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
+              validTrucks.push(truck);
+              //if anything of the properties matches, exit the loop, since we already know there's a match
+              break;
+            }
           }
         }
       }
+      DB = validTrucks;
     }
-    return validTrucks;
   });
+  console.log(DB);
+  return DB;
 }
 
 function findOpenTrucks(truckOpen, truckClose){
