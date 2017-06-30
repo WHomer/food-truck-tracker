@@ -59,25 +59,28 @@ function DBsearch(){
       }
     }
     if(allBlank){
-      return snapshot.val();
+      DB = snapshot.val();
     }
-    for (var key in snapshot.val()){
-      var truck = snapshot.val()[key];
-      //for each potential input
-      for (var property in inputObj){
-        //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
-        if(inputObj[property] && truck[property]){
-          //test if the property in the input section (inputObj) matches this property of the truck
-          if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
-            validTrucks.push(truck);
-            //if anything of the properties matches, exit the loop, since we already know there's a match
-            break;
+    else{
+      for (var key in snapshot.val()){
+        var truck = snapshot.val()[key];
+        //for each potential input
+        for (var property in inputObj){
+          //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
+          if(inputObj[property] && truck[property]){
+            //test if the property in the input section (inputObj) matches this property of the truck
+            if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
+              validTrucks.push(truck);
+              //if anything of the properties matches, exit the loop, since we already know there's a match
+              break;
+            }
           }
         }
       }
+      DB = validTrucks;
     }
-    DB = validTrucks;
   });
+  console.log(DB);
   return DB;
 }
 
