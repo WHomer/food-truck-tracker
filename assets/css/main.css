@@ -19,8 +19,13 @@
    margin-top:-480px;  /* your iframe height */
 }
 
-.title {
-	text-align: center;
+.panel-heading {
+  font-size: 24px;
+}
+
+.btn {
+  font-size: 24px;
+
 }
 
 .title-container {
@@ -35,9 +40,11 @@
 
 .title{
 	margin-top: 0;
-	padding: 10px 0;
+	padding: 15px 15px;
 	background-color: red;
 	color: #fff;
+  font-size: 32px;
+  text-align: center;
 }
 
 .row {
@@ -90,6 +97,22 @@
 	margin-bottom: 10px;
 }
 
+.search-description {
+  font-size: 18px;
+  font-style: italic;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+label {
+  font-size: 18px;
+}
+
+input {
+  font-size: 14px;
+  font-style: italic;
+}
+
 
 .lightbox {
  	display: none; /*tempory */
@@ -112,4 +135,13 @@
 	width: 90%;
 	height: 70%;
 	max-width: 1200px;
+}
+
+.add-truck-panel {
+  padding-top: 20px;
+}
+
+*#add-first-street, #add-second-street, #add-date-seen, #add-time-seen {
+  width: 100%;
+  margin-top: 20px;
 }

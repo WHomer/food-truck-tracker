@@ -16,18 +16,20 @@
 	<body>
   	<div class="main-container">
 	    <!-- start of title -->
-      <div class="container title-container">
-        <img src="assets/images/chicagoskyline2.PNG" class="logo">
-        <img src="assets/images/foodtrucklogochalkduster.PNG" class="logo text-logo">
 
-        <!-- ?\<h1 class="title">Go Truck Yourself</h1> -->
+	    <div class="jumbotron">
+	      <div class="container">
+	        <img src="assets/images/chicagoskyline2.PNG" width="100%" margin="0">
+	        <img src="assets/images/foodtrucklogochalkduster.PNG" width="100%" margin-left="20px">
 
-        <h3 class="title">The Chicago Food Truck Finding App</h3>
-    	</div>
+	        <!-- ?\<h1 class="title">Go Truck Yourself</h1> -->
+
+	        <h3 class="title">The Chicago Food Truck Finding App</h3>
+	      </div>
+	    </div>
 			<!-- end of title -->
 
 			<!-- start of main content -->
-
 
 			<div class="row">
 				<div class="panel panel-primary">
@@ -40,7 +42,7 @@
 					</div>
 					<div class="col-md-3">
 						<div>
-							<div>Search by Name, Cuisine, Time, or Location of a food truck to find more about the truck.</div>
+							<div class="search-description">Search for trucks by using one or all of the search boxes. Press Search for a list of all trucks.</div>
 							<!-- form inout for map search  -->
 							<form class="form">
 							  <div class="form-group">
@@ -95,7 +97,6 @@
 									<div class="truck-list-detail">
 										<div class="truck-list-name">The Truck Stop</div>
 										<div class="truck-list-cuisine">Trucker Food</div>
-										<div class="truck-list-description">The ironic Food Truck that caters to only Truckers!!!</div>
 									</div>
 								</div>
 								<div class="truck-list">
@@ -105,7 +106,6 @@
 									<div class="truck-list-detail">
 										<div class="truck-list-name">The Truck Stop</div>
 										<div class="truck-list-cuisine">Trucker Food</div>
-										<div class="truck-list-description">The ironic Food Truck that caters to only Truckers!!!</div>
 									</div>
 								</div>
 								<div class="truck-list">
@@ -115,7 +115,6 @@
 									<div class="truck-list-detail">
 										<div class="truck-list-name">The Truck Stop</div>
 										<div class="truck-list-cuisine">Trucker Food</div>
-										<div class="truck-list-description">The ironic Food Truck that caters to only Truckers!!!</div>
 									</div>
 								</div>
 								<div class="truck-list">
@@ -125,7 +124,6 @@
 									<div class="truck-list-detail">
 										<div class="truck-list-name">The Truck Stop</div>
 										<div class="truck-list-cuisine">Trucker Food</div>
-										<div class="truck-list-description">The ironic Food Truck that caters to only Truckers!!!</div>
 									</div>
 								</div>
 								<div class="truck-list">
@@ -135,7 +133,6 @@
 									<div class="truck-list-detail">
 										<div class="truck-list-name">The Truck Stop</div>
 										<div class="truck-list-cuisine">Trucker Food</div>
-										<div class="truck-list-description">The ironic Food Truck that caters to only Truckers!!!</div>
 									</div>
 								</div>
 								<!-- list of search results ends here -->
@@ -153,18 +150,25 @@
 						Add Food Truck
 					</div>
 					<div class="col-md-12">
+					<div class="add-truck-panel">
 						<form action="">
 							<div class="form-group">
 								<label for="truck-name">Truck Name: </label>
 								<input type="text" class="form-control" id="add-truck-name">
 							</div>
 							<div class="form-group">
-								<label for="truck-cuisine">Truck Cuisine</label>
+								<label for="truck-cuisine">Truck Cuisine: </label>
 								<input type="text" class="form-control" id="add-truck-cuisine">
 							</div>
 							<div class="form-group">
-								<label for="truck-date">Description</label>
-								<textarea class="form-control" id="add-truck-description" rows="5"></textarea>
+								<label for="truck-location">Where Last Seen:</label>
+								<input type="text" class="form-control" id="add-first-street" placeholder="Enter First Cross Street">
+								<input type="text" class="form-control" id="add-second-street" placeholder="Enter Second Cross Street">
+							</div>
+							<div class="form-group">
+								<label for="truck-date">When Last Seen:</label>
+								<input type="text" class="form-control" id="add-date-seen" placeholder="Choose Date Seen">
+								<input type="text" class="form-control" id="add-time-seen" placeholder="Choose Time Seen">
 							</div>
 
 							<input type="submit" class="btn btn-lg btn-success add-button" text="Add Truck">
@@ -173,10 +177,7 @@
 				</div>
 				<!-- end of add truck -->
 			</div>
-
-
 			<!-- end of main content -->
-
     </div>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
