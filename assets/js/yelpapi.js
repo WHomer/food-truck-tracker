@@ -1,5 +1,5 @@
 
-
+// to test this code use bash, go to the folder and enter "node yelpapi"
 'use strict';
 
 
@@ -25,6 +25,7 @@ client.reviews('babycakes-chicago').then(response => {
   console.log(response.jsonBody.reviews[0].text);
 }).catch(e => {
   console.log(e);
+
 
 
 });
