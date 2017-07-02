@@ -112,8 +112,8 @@ function DBsearch(){
           for (var property in inputObj){
             //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
             if(inputObj[property] && truck[property]){
-              //test if the property in the input section (inputObj) matches this property of the truck
-              if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
+              //test if the property in the input section (inputObj) appears in this property of the truck
+              if(truck[property].toLowerCase().indexOf(inputObj[property].toLowerCase())!=-1){
                 validTrucks.push(truck);
                 //if anything of the properties matches, exit the loop, since we already know there's a match
                 break;
@@ -161,28 +161,26 @@ function loadFromJSON(){
   }
 }
 
-//NOTE: ideally, this should take an object full or trucks as an argument, instead of using the .ref to call the db, but for testing purposes, this is here so we can use it easily.
-function truckSort(prop){
-  var arr;
-  firebase.database().ref('/trucks').once("value", function (snapshot) {
-    arr = [];
-    snapshot.forEach(function(child){
-      //grabbing the data and keys into an array, for sorting
-      arr.push([child.val(), child.key]);
-    });
-  });
+function truckSort(obj, prop){
+  var arr = [];
+  //grab data and keys into an array for sorting
+  for(var key in obj){
+    arr.push([obj[key], key]);
+  }
   //https://stackoverflow.com/questions/8900732/javascript-sort-objects-in-an-array-alphabetically-on-one-property-of-the-arra
   arr.sort(function(a,b){
     var textA = a[0][prop].toUpperCase();
     var textB = b[0][prop].toUpperCase();
     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
   });
-  //putting it back in the same object format as the db normally is
-  var obj = {};
+  //putting it back in object format, with the key as a property
+  //it uses indices instead of keys to maintain sorted order
+  var sortedResult = {};
   for(var index in arr){
-    obj[arr[index][1]] = arr[index][0];
+    arr[index][0].key = arr[index][1];
+    sortedResult[index] = arr[index][0];
   }
-  return arr;
+  return sortedResult;
 }
 
 
@@ -228,8 +226,9 @@ $("#search-button").on("click", function(event) {
     //Whatever we want the search button to do (e.g. displaying and/or sorting the results) should go here
     console.log(DB);
 
-    // truckSort(DB, "Cuisine Type")
+    var sortedDB = truckSort(DB, "Cuisine Type");
 
+    console.log(sortedDB);
   });
 
 });
