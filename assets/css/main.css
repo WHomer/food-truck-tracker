@@ -11,8 +11,8 @@
 }
 
 .overlay {
-   background:transparent; 
-   position:relative; 
+   background:transparent;
+   position:relative;
    width:640px;
    height:480px; /* your iframe height */
    top:480px;  /* your iframe height */
@@ -144,4 +144,8 @@ input {
 *#add-first-street, #add-second-street, #add-date-seen, #add-time-seen {
   width: 100%;
   margin-top: 20px;
+}
+
+.ui-menu{
+	background-color: white;
 }

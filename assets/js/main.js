@@ -185,6 +185,42 @@ function truckSort(prop){
   return arr;
 }
 
+
+// function setAutocomplete(){
+//
+// }
+
+//https://jqueryui.com/autocomplete/
+$( function() {
+  var availableTags = [
+    "ActionScript",
+    "AppleScript",
+    "Asp",
+    "BASIC",
+    "C",
+    "C++",
+    "Clojure",
+    "COBOL",
+    "ColdFusion",
+    "Erlang",
+    "Fortran",
+    "Groovy",
+    "Haskell",
+    "Java",
+    "JavaScript",
+    "Lisp",
+    "Perl",
+    "PHP",
+    "Python",
+    "Ruby",
+    "Scala",
+    "Scheme"
+  ];
+  $( "#truck-name" ).autocomplete({
+    source: availableTags
+  });
+} );
+
 $("#search-button").on("click", function(event) {
   event.preventDefault();
   //DBsearch returns a promise, so the then waits for that promise to return, so we're sure to have the DB before we use it
