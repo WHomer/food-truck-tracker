@@ -10,8 +10,6 @@ var seedTruck = {
   facebookURL: "facebook.com",
   truckSchedule : null,
   truckDescription: null,
-  // lastSeen : null,
-  // posts : [],
 };
 
 
@@ -46,42 +44,91 @@ function retrieveInput(){
 }
 
 function DBsearch(){
-  var DB;
-  database.ref("trucks/").once("value", function(snapshot) {
-    // do some stuff once
-    var validTrucks = [];
-    inputObj = retrieveInput();
-    var allBlank = true;
-    for (var prop in inputObj){
-      if(inputObj[prop]){
-        allBlank = false;
-        break;
+  var DB = new Promise(function(resolve, reject){
+    database.ref("trucks/").once("value", function(snapshot) {
+      // do some stuff once
+      var validTrucks = [];
+      inputObj = retrieveInput();
+      var allBlank = true;
+      for (var prop in inputObj){
+        if(inputObj[prop]){
+          allBlank = false;
+          break;
+        }
       }
-    }
-    if(allBlank){
-      DB = snapshot.val();
-    }
-    else{
-      for (var key in snapshot.val()){
-        var truck = snapshot.val()[key];
-        //for each potential input
-        for (var property in inputObj){
-          //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
-          if(inputObj[property] && truck[property]){
-            //test if the property in the input section (inputObj) matches this property of the truck
-            if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
-              validTrucks.push(truck);
-              //if anything of the properties matches, exit the loop, since we already know there's a match
-              break;
+      if(allBlank){
+        DB = snapshot.val();
+      }
+      else{
+        for (var key in snapshot.val()){
+          var truck = snapshot.val()[key];
+          //for each potential input
+          for (var property in inputObj){
+            //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
+            if(inputObj[property] && truck[property]){
+              //test if the property in the input section (inputObj) matches this property of the truck
+              if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
+                validTrucks.push(truck);
+                //if anything of the properties matches, exit the loop, since we already know there's a match
+                break;
+              }
             }
           }
         }
+        DB = validTrucks;
       }
-      DB = validTrucks;
-    }
+      console.log(DB);
+      resolve(DB);
+    }, function(errorObject){
+      console.log("Errors handled: "+errorObject.code);
+      reject([]);
+    });
+  }).then(function(){
+    console.log("DB Search Done");
+    return DB;
   });
-  console.log(DB);
-  return DB;
+}
+
+function DBsearch(){
+  return new Promise(function(resolve, reject){
+    database.ref("trucks/").once("value", function(snapshot) {
+      // do some stuff once
+      var validTrucks = [];
+      inputObj = retrieveInput();
+      var allBlank = true;
+      for (var prop in inputObj){
+        if(inputObj[prop]){
+          allBlank = false;
+          break;
+        }
+      }
+      if(allBlank){
+        DB = snapshot.val();
+      }
+      else{
+        for (var key in snapshot.val()){
+          var truck = snapshot.val()[key];
+          //for each potential input
+          for (var property in inputObj){
+            //if the input and truck property exist (and ONLY if they exist, to avoid comparing to null)...
+            if(inputObj[property] && truck[property]){
+              //test if the property in the input section (inputObj) matches this property of the truck
+              if(inputObj[property].toLowerCase()===truck[property].toLowerCase()){
+                validTrucks.push(truck);
+                //if anything of the properties matches, exit the loop, since we already know there's a match
+                break;
+              }
+            }
+          }
+        }
+        DB = validTrucks;
+      }
+      resolve(DB);
+    }, function(errorObject){
+      console.log("Errors handled: "+errorObject.code);
+      reject([]);
+    });
+  });
 }
 
 function findOpenTrucks(truckOpen, truckClose){
@@ -105,30 +152,63 @@ function findOpenTrucks(truckOpen, truckClose){
 }
 
 function loadFromJSON(){
+  //clear out the database before adding more
   database.ref("trucks/").remove();
   for (var truckindex in truckjson){
-
     // console.log(truckjson[truckindex]);
     var truck = truckjson[truckindex];
     database.ref("trucks/").push(truck);
   }
 }
 
-database.ref().on("child_added", function(snapshot) {
-  //variables for easy access
-  var obj = snapshot.val();
-  var key = snapshot.key;
-}, function(errorObject){
-  console.log("Errors handled: "+errorObject.code);
+//NOTE: ideally, this should take an object full or trucks as an argument, instead of using the .ref to call the db, but for testing purposes, this is here so we can use it easily.
+function truckSort(prop){
+  var arr;
+  firebase.database().ref('/trucks').once("value", function (snapshot) {
+    arr = [];
+    snapshot.forEach(function(child){
+      //grabbing the data and keys into an array, for sorting
+      arr.push([child.val(), child.key]);
+    });
+  });
+  //https://stackoverflow.com/questions/8900732/javascript-sort-objects-in-an-array-alphabetically-on-one-property-of-the-arra
+  arr.sort(function(a,b){
+    var textA = a[0][prop].toUpperCase();
+    var textB = b[0][prop].toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  });
+  //putting it back in the same object format as the db normally is
+  var obj = {};
+  for(var index in arr){
+    obj[arr[index][1]] = arr[index][0];
+  }
+  return arr;
+}
+
+$("#search-button").on("click", function(event) {
+  event.preventDefault();
+  //DBsearch returns a promise, so the then waits for that promise to return, so we're sure to have the DB before we use it
+  DBsearch().then(function(DB){
+    //Whatever we want the search button to do (e.g. displaying and/or sorting the results) should go here
+    console.log(DB);
+
+    // truckSort(DB, "Cuisine Type")
+
+  });
+
 });
 
 
 
 
 
-
-
-
+// database.ref().on("child_added", function(snapshot) {
+//   //variables for easy access
+//   var obj = snapshot.val();
+//   var key = snapshot.key;
+// }, function(errorObject){
+//   console.log("Errors handled: "+errorObject.code);
+// });
 
 // function DBremove(key){
 //   event.preventDefault();
