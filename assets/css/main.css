@@ -146,6 +146,15 @@ input {
   margin-top: 20px;
 }
 
+/*styling for the full autocomplete menu*/
 .ui-menu{
-	background-color: white;
+	background: white;
+	width:20%;
+}
+/*styling for individual autocomplete options*/
+.ui-menu-item{
+	border: .25px solid black;
+}
+.ui-menu-item:hover{
+	background:#83D0EF;
 }
