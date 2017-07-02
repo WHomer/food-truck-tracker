@@ -11,8 +11,8 @@
 }
 
 .overlay {
-   background:transparent; 
-   position:relative; 
+   background:transparent;
+   position:relative;
    width:640px;
    height:480px; /* your iframe height */
    top:480px;  /* your iframe height */
@@ -146,8 +146,22 @@ input {
 
 *#add-first-street, #add-second-street, #add-date-seen, #add-time-seen {
   width: 100%;
+
   margin-bottom: 20px;
   margin-top: 0px;
 }
 
+
+/*styling for the full autocomplete menu*/
+.ui-menu{
+	background: white;
+	width:20%;
+}
+/*styling for individual autocomplete options*/
+.ui-menu-item{
+	border: .25px solid black;
+}
+.ui-menu-item:hover{
+	background:#83D0EF;
+}
 
