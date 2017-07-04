@@ -32,12 +32,10 @@ function DBpushTruck(){
 function retrieveInput(){
   //if there is text in the input field, the var will set to it. otherwise sets to false
   var truckName = ($("#truck-name").val()) ? $("#truck-name").val().trim().toLowerCase(): false;
-  var truckCuisine = ($("#truck-cuisine").val()) ?  $("#truck-cuisine").val().trim().toLowerCase() : false;
-  // var truckSchedule = ($("#input-truck-date").val()) ? $("#input-truck-date").val().trim().toLowerCase() : false;
+  var truckCuisine = ($("#truck-cuisine").text()) ?  $("#truck-cuisine").text().trim().toLowerCase() : false;
   return {
     "Truck Name (DBA)":truckName,
     "Cuisine Type":truckCuisine,
-    // truckSchedule:truckSchedule,
   };
 }
 
@@ -145,10 +143,8 @@ function createDropdownTags(callback){
 }
 
 function setHTMLDropdownTags(dropdownTags){
-  console.log(dropdownTags);
   for(var index in dropdownTags){
-      console.log(dropdownTags[index]);
-      $("#dropdownmenu").append('<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'+dropdownTags[index]+'</a></li>');
+      $("#dropdownmenu").append('<li role="presentation"><a class="dropdownmenuitem" role="menuitem" tabindex="-1">'+dropdownTags[index]+'</a></li>');
     }
     return;
 }
@@ -168,20 +164,22 @@ setAutocompleteTags().then(function(tags){
 });
 
 
-function setDropdownTagsHelper(tags){
-  console.log(tags);
-}
+
+
+$('#dropdownmenu').on('click', ".dropdownmenuitem", function(){
+  $('#truck-cuisine').text($(this).text());
+});
 
 $("#search-button").on("click", function(event) {
   event.preventDefault();
   //DBsearch returns a promise, so the then waits for that promise to return, so we're sure to have the DB before we use it
   DBsearch().then(function(DB){
     //Whatever we want the search button to do (e.g. displaying and/or sorting the results) should go here
-    console.log(DB);
+    // console.log(DB);
 
     var sortedDB = truckSort(DB, "Cuisine Type");
 
-    console.log(sortedDB);
+    // console.log(sortedDB);
     displayTrucks(DB);
   });
 });
@@ -194,7 +192,7 @@ $('#search-button').on('click', function(event){
     displayTrucks(trucks);
     // console.log(DBsearch());
 });
-// iterates through the objects 
+// iterates through the objects
 function displayTrucks(trucks){
 
   var truckContainer = $(".trucks-list");

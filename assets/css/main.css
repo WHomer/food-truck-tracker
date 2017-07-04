@@ -28,6 +28,15 @@
 
 }
 
+.btn-dropdown{
+	font-size: 14px;
+}
+
+.dropdown-input {
+  font-size: 14px;
+  font-style: italic;
+}
+
 .title-container {
 	width: 100%;
 	padding: 0;
@@ -151,7 +160,7 @@ input {
   margin-top: 0px;
 }
 
-li {
+.search-intro {
   display: list-item;
   list-style: circle;
   padding-bottom: 5px;
@@ -170,4 +179,3 @@ li {
 .ui-menu-item:hover{
 	background:#83D0EF;
 }
-
