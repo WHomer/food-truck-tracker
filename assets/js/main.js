@@ -32,12 +32,10 @@ function DBpushTruck(){
 function retrieveInput(){
   //if there is text in the input field, the var will set to it. otherwise sets to false
   var truckName = ($("#truck-name").val()) ? $("#truck-name").val().trim().toLowerCase(): false;
-  var truckCuisine = ($("#truck-cuisine").val()) ?  $("#truck-cuisine").val().trim().toLowerCase() : false;
-  // var truckSchedule = ($("#input-truck-date").val()) ? $("#input-truck-date").val().trim().toLowerCase() : false;
+  var truckCuisine = ($("#truck-cuisine").text()) ?  $("#truck-cuisine").text().trim().toLowerCase() : false;
   return {
     "Truck Name (DBA)":truckName,
     "Cuisine Type":truckCuisine,
-    // truckSchedule:truckSchedule,
   };
 }
 
@@ -117,42 +115,71 @@ function truckSort(obj, prop){
 
 
 function setAutocompleteTags(){
-  // var tags = [];
   return new Promise(function(resolve, reject){
-    var tags = [];
+    var autocompleteTags = [];
     database.ref("trucks/").once("value", function(snapshot) {
       for(var key in snapshot.val()){
-        tags.push(snapshot.val()[key]["Truck Name (DBA)"]);
+        autocompleteTags.push(snapshot.val()[key]["Truck Name (DBA)"]);
       }
     }, function(errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
-    resolve(tags);
+    resolve(autocompleteTags);
   });
 }
+
+function createDropdownTags(callback){
+    var dropdownTags = [];
+    database.ref("trucks/").once("value", function(snapshot) {
+      for(var key in snapshot.val()){
+        if(dropdownTags.indexOf(snapshot.val()[key]["Cuisine Type"])==-1){
+          dropdownTags.push(snapshot.val()[key]["Cuisine Type"]);
+        }
+      }
+      callback(dropdownTags);
+    }, function(errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+}
+
+function setHTMLDropdownTags(dropdownTags){
+  for(var index in dropdownTags){
+      $("#dropdownmenu").append('<li role="presentation"><a class="dropdownmenuitem" role="menuitem" tabindex="-1">'+dropdownTags[index]+'</a></li>');
+    }
+    return;
+}
+
+createDropdownTags(setHTMLDropdownTags);
 
 setAutocompleteTags().then(function(tags){
   //https://jqueryui.com/autocomplete/
   $( function() {
-    var availableTags = tags;
+    var autocompleteTags = tags;
     $( "#truck-name" ).autocomplete({
-      source: availableTags
+      source: autocompleteTags,
     });
+
+
   } );
 });
 
 
+
+
+$('#dropdownmenu').on('click', ".dropdownmenuitem", function(){
+  $('#truck-cuisine').text($(this).text());
+});
 
 $("#search-button").on("click", function(event) {
   event.preventDefault();
   //DBsearch returns a promise, so the then waits for that promise to return, so we're sure to have the DB before we use it
   DBsearch().then(function(DB){
     //Whatever we want the search button to do (e.g. displaying and/or sorting the results) should go here
-    console.log(DB);
+    // console.log(DB);
 
     var sortedDB = truckSort(DB, "Cuisine Type");
 
-    console.log(sortedDB);
+    // console.log(sortedDB);
     displayTrucks(DB);
   });
 });
@@ -165,7 +192,7 @@ $('#search-button').on('click', function(event){
     displayTrucks(trucks);
     // console.log(DBsearch());
 });
-// iterates through the objects 
+// iterates through the objects
 function displayTrucks(trucks){
 
   var truckContainer = $(".trucks-list");
@@ -181,6 +208,43 @@ function displayTrucks(trucks){
     truckContainer.append(divHolder);
   }
 }
+
+
+// //Get input values
+
+//   var reportDate = null;
+//   var reportTime = null;
+//   var reportLocation = null;
+//   var reportName = null;
+//   var reportCuisine = null;
+
+//   $('#submit-button').on('click', function(event) {
+//     event.preventDefault(); 
+//     console.log("submit clicked");
+
+// // Getting values from text boxes
+//     reportDate = $("#add-date-seen").val().trim();
+//     reportTime = $("#add-time-seen").val().trim();
+//     reportLocation = $("#add-location").val().trim();
+//     reportName = $("#add-truck-name").val().trim();
+//     reportCuisine = $("#add-truck-cuisine").val().trim();   
+
+// // Console log input to verify it is captured
+//     console.log(reportDate);
+//     console.log(reportTime);
+//     console.log(reportLocation);
+//     console.log(reportName);
+//     console.log(reportCuisine);
+
+// // Clear out the text boxes after submit
+//   $("#add-date-seen").val("");
+//   $("#add-time-seen").val("");
+//   $("#add-location").val("");
+//   $("#add-truck-name").val("");
+//   $("#add-truck-cuisine").val("");
+
+// });
+
 
 
 // database.ref().on("child_added", function(snapshot) {
