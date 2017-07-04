@@ -33,7 +33,7 @@ truckjson = [
    "Facebook": ""
  },
  {
-   "Truck Name (DBA)": "Aztec Daves Food Truck",
+   "Truck Name (DBA)": "Aztec Daves Food ",
    "Cuisine Type": "Latin",
    "Savory": "X",
    "Sweet": "",
@@ -100,7 +100,7 @@ truckjson = [
  },
  {
    "Truck Name (DBA)": "Bruges Brothers",
-   "Cuisine Type": "American",
+   "Cuisine Type": "Loaded Fries",
    "Savory": "X",
    "Sweet": "X",
    "Image URL": "https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-1/p200x200/11693986_406915512825263_6527562414840948639_n.jpg?oh=17dad68f9138e36378a2d178ab469ddf&oe=59C71547",
@@ -191,10 +191,10 @@ truckjson = [
    "Cuisine Type": "Pizza",
    "Savory": "X",
    "Sweet": "X",
-   "Image URL": "https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-1/c0.0.200.200/p200x200/13178588_1216525585024503_6921420246421521513_n.jpg?oh=b0eece9d5f74302813f0898b1a1b6f12&oe=59CE94F3",
+   "Image URL": "https://pbs.twimg.com/profile_images/558376918903308288/YR1RJhoT_400x400.jpeg",
    "URL": "www.dapizzadude.com",
    "Schedule": "",
-   "Twitter": "https://twitter.com/dapizzadude1",
+   "Twitter": "https://twitter.com/dapizzadude1https://pbs.twimg.com/profile_images/558376918903308288/YR1RJhoT_400x400.jpeg",
    "Facebook": ""
  },
  {
@@ -213,8 +213,8 @@ truckjson = [
    "Cuisine Type": "Latin",
    "Savory": "X",
    "Sweet": "",
-   "Image URL": "https://pbs.twimg.com/profile_images/426133876075794432/CgzFiHdj_400x400.jpeg",
-   "URL": "",
+   "Image URL": "https://scontent.ford1-1.fna.fbcdn.net/v/t1.0-1/p200x200/15941212_1028685660591464_5175189297099329108_n.jpg?oh=e6c5d182ad2873d2cb0be9af0ffb5e30&oe=59CF02B1",
+   "URL": "https://scontent.ford1-1.fna.fbcdn.net/v/t1.0-1/p200x200/15941212_1028685660591464_5175189297099329108_n.jpg?oh=e6c5d182ad2873d2cb0be9af0ffb5e30&oe=59CF02B1",
    "Schedule": "",
    "Twitter": "",
    "Facebook": "https://www.facebook.com/EatFlyingTacos/"
@@ -301,7 +301,7 @@ truckjson = [
    "Cuisine Type": "Jamaican",
    "Savory": "X",
    "Sweet": "",
-   "Image URL": "http://www.jerkgrill.com/wp-content/themes/jerk/assets/images/logo.png",
+   "Image URL": "http://www.jerkgrill.com/wp-content/themes/jerk/assets/images/DePaul-Truck.jpg",
    "URL": "http://www.jerkgrill.com/",
    "Schedule": "",
    "Twitter": "",
@@ -342,7 +342,7 @@ truckjson = [
  },
  {
    "Truck Name (DBA)": "La Patrona",
-   "Cuisine Type": "Tacos",
+   "Cuisine Type": "Latin",
    "Savory": "X",
    "Sweet": "",
    "Image URL": "https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-1/c47.14.172.172/p200x200/1005179_479507755467758_1697067104_n.jpg?oh=3fb69779fb3abcec0136f3c41a23d5ff&oe=59C9AD95",
@@ -385,7 +385,7 @@ truckjson = [
    "Facebook": ""
  },
  {
-   "Truck Name (DBA)": "Mimi's Chicago Humble Pie",
+   "Truck Name (DBA)": "Mimi's Humble Pie",
    "Cuisine Type": "Pizza",
    "Savory": "X",
    "Sweet": "",
@@ -396,7 +396,7 @@ truckjson = [
    "Facebook": ""
  },
  {
-   "Truck Name (DBA)": "Mr Quiles Mexican Food",
+   "Truck Name (DBA)": "Mr Quiles Mexican",
    "Cuisine Type": "Latin",
    "Savory": "X",
    "Sweet": "",
@@ -440,7 +440,7 @@ truckjson = [
    "Facebook": ""
  },
  {
-   "Truck Name (DBA)": "Rogue Curbside Kitchen",
+   "Truck Name (DBA)": "Rogue Curbside",
    "Cuisine Type": "Sandwiches",
    "Savory": "X",
    "Sweet": "",
@@ -495,7 +495,7 @@ truckjson = [
    "Facebook": "https://www.facebook.com/thecajunconnoisseur/"
  },
  {
-   "Truck Name (DBA)": "The Cook Out on Wheels",
+   "Truck Name (DBA)": "Cook Out on Wheels",
    "Cuisine Type": "BBQ",
    "Savory": "X",
    "Sweet": "X",
@@ -507,7 +507,7 @@ truckjson = [
  },
  {
    "Truck Name (DBA)": "The Corner Farmacy",
-   "Cuisine Type": "Healthy",
+   "Cuisine Type": "Sandwiches",
    "Savory": "X",
    "Sweet": "",
    "Image URL": "https://pbs.twimg.com/profile_images/496401618905346048/TCM0e4HB_400x400.jpeg",
@@ -517,7 +517,7 @@ truckjson = [
    "Facebook": "https://www.facebook.com/thecornerfarmacy/"
  },
  {
-   "Truck Name (DBA)": "The Eastman Egg Company",
+   "Truck Name (DBA)": "The Eastman Egg Co.",
    "Cuisine Type": "Breakfast",
    "Savory": "X",
    "Sweet": "",
@@ -576,7 +576,7 @@ truckjson = [
    "Cuisine Type": "Asian",
    "Savory": "X",
    "Sweet": "",
-   "Image URL": "https://pbs.twimg.com/profile_images/3602994183/2c4dc99c23265f930c859ad2d2dc4e53_normal.jpeg",
+   "Image URL": "https://static1.squarespace.com/static/55f0c58ce4b0cea2feaf4dda/t/55f3876ee4b0fe0804db4208/1442023279776/Photo+Aug+10%2C+10+59+19+AM.jpg?format=750w",
    "URL": "http://www.yumdumtruck.com/",
    "Schedule": "http://www.yumdumtruck.com/",
    "Twitter": "https://twitter.com/YumDumTruck?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",

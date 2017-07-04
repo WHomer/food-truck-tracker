@@ -119,31 +119,60 @@ function truckSort(obj, prop){
 
 
 function setAutocompleteTags(){
-  // var tags = [];
   return new Promise(function(resolve, reject){
-    var tags = [];
+    var autocompleteTags = [];
     database.ref("trucks/").once("value", function(snapshot) {
       for(var key in snapshot.val()){
-        tags.push(snapshot.val()[key]["Truck Name (DBA)"]);
+        autocompleteTags.push(snapshot.val()[key]["Truck Name (DBA)"]);
       }
     }, function(errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
-    resolve(tags);
+    resolve(autocompleteTags);
   });
 }
+
+function createDropdownTags(callback){
+    var dropdownTags = [];
+    database.ref("trucks/").once("value", function(snapshot) {
+      for(var key in snapshot.val()){
+        if(dropdownTags.indexOf(snapshot.val()[key]["Cuisine Type"])==-1){
+          dropdownTags.push(snapshot.val()[key]["Cuisine Type"]);
+        }
+      }
+      callback(dropdownTags);
+    }, function(errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+}
+
+function setHTMLDropdownTags(dropdownTags){
+  console.log(dropdownTags);
+  for(var index in dropdownTags){
+      console.log(dropdownTags[index]);
+      $("#dropdownmenu").append('<li role="presentation"><a role="menuitem" tabindex="-1" href="#">'+dropdownTags[index]+'</a></li>');
+    }
+    return;
+}
+
+createDropdownTags(setHTMLDropdownTags);
 
 setAutocompleteTags().then(function(tags){
   //https://jqueryui.com/autocomplete/
   $( function() {
-    var availableTags = tags;
+    var autocompleteTags = tags;
     $( "#truck-name" ).autocomplete({
-      source: availableTags
+      source: autocompleteTags,
     });
+
+
   } );
 });
 
 
+function setDropdownTagsHelper(tags){
+  console.log(tags);
+}
 
 $("#search-button").on("click", function(event) {
   event.preventDefault();
