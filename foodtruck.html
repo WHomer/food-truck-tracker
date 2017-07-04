@@ -67,7 +67,7 @@
 							    <label for="truck-location">Location</label>
 							    <input type="text" class="form-control" id="truck-location" placeholder="Chicago">
 							  </div>
-							  <button type="submit" class="btn btn-lg btn-success search-button" id="search-button">Search</button>
+							  <button type="submit" class="btn btn-lg btn-success search-button" id="submit-button">Search</button>
 							</form>
 						</div>
 					</div>
@@ -151,34 +151,34 @@
 				<!-- end of search for truck -->
 		<div class="food-truck-reporting-container">
 			<div class="row">
-				<!-- Food truck festival image -->
-					<div class="col-md-8">
-							<img src="" class="FoodTruckImage">	
-							</div>
-						</div>
-					</div>
 						
-
 				<!-- start of add truck -->
 					<div class="panel panel-primary">
 					<div class="panel-heading">
 						Report a Food Truck
 					</div>
-					<div class="col-md-4">
+				<!-- Food truck festival image -->
+					<div class="col-md-9">
+						<div id="food-truck-image">
+							<img src="assets/images/FoodTruck.png">	
+							</div>
+						</div>
+	
+					<div class="col-md-3">
 					<div class="add-truck-panel">
 						<form action="">
 							<div class="form-group">
 								<label for="truck-name">Truck Name: </label>
-								<input type="text" class="form-control" id="add-truck-name">
+								<input type="text" class="form-control" id="add-truck-name" placeholder="Enter Truck Name">
 							</div>
 							<div class="form-group">
 								<label for="truck-cuisine">Truck Cuisine: </label>
-								<input type="text" class="form-control" id="add-truck-cuisine">
+								<input type="text" class="form-control" id="add-truck-cuisine" placeholder="Select Truck Cuisine">
 							</div>
 							<div class="form-group">
 								<label for="truck-location">Where Last Seen:</label>
-								<input type="text" class="form-control" id="add-first-street" placeholder="Enter First Cross Street">
-								<input type="text" class="form-control" id="add-second-street" placeholder="Enter Second Cross Street">
+								<input type="text" class="form-control" id="add-location" placeholder="Choose Location">
+								
 							</div>
 							<div class="form-group">
 								<label for="truck-date">When Last Seen:</label>
