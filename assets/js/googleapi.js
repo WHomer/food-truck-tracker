@@ -193,7 +193,7 @@ function initMap() {
       position: feature.position,
       icon: icons[feature.type].icon,
       map: map
-  });
+  })
 });
 
   $('.map-container').on("mouseleave", function(){
@@ -204,19 +204,6 @@ function initMap() {
   map.setOptions({ scrollwheel: true });
 });
 
-// (function() {
-//   $(function() {
-//     $("#btn-start").click(function() {
-//       $("iframe[src*='google.com/maps']").scrollprevent({
-//         printLog: true
-//       }).start();
-//       return $("#btn-stop").click(function() {
-//         return $("iframe[src*='google.com/maps']").scrollprevent().stop();
-//       });
-//     });
-//     return $("#btn-start").trigger("click");
-//   });
-// }).call(this);
-
+// Make above passive for better response. Not working perfectly.
 
 }
