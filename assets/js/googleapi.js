@@ -2,6 +2,7 @@ var map;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
+    // scrollwheel: false,
     zoom: 12,
     center: new google.maps.LatLng(41.9106569, -87.645705),
     mapTypeId: 'roadmap'
@@ -192,6 +193,17 @@ function initMap() {
       position: feature.position,
       icon: icons[feature.type].icon,
       map: map
-    });
-  });
+  })
+});
+
+  $('.map-container').on("mouseleave", function(){
+  map.setOptions({ scrollwheel: false });
+});
+
+  $('.map-container').on("mousedown", function() {
+  map.setOptions({ scrollwheel: true });
+});
+
+// Make above passive for better response. Not working perfectly.
+
 }
