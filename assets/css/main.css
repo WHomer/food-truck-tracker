@@ -189,6 +189,16 @@ label {
 	height: 100%;
 	overflow: auto;
 	background-color: black;
+}
+.lb-foodtruck-image {
+	max-width: 300px;
+	width: 100%;
+	max-height: 40%;
+}
+
+.lb-foodtruck-detail{
+	padding-top: 10px;
+}
 
 /*styling for the full autocomplete menu*/
 .ui-menu {
@@ -200,22 +210,13 @@ label {
 	border: .25px solid black;
 }
 
-.lb-foodtruck-image {
-	max-width: 500px;
-	width: 100%;
-}
-
-.lb-foodtruck-detail{
-	padding-top: 10px;
-}
-
 .yelp-review {
 	padding-bottom: 10px;
 }
 
 .add-truck-panel {
   padding-top: 20px;
-
+}
 .ui-menu-item:hover{
 	background:#83D0EF;
 }
