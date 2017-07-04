@@ -16,6 +16,17 @@
   font-size: 24px;
 }
 
+
+.btn-dropdown{
+	font-size: 14px;
+}
+
+.dropdown-input {
+  font-size: 14px;
+  font-style: italic;
+}
+
+
 input {
   font-size: 14px;
   font-style: italic;
@@ -25,7 +36,7 @@ label {
   font-size: 18px;
 }
 
-li {
+.search-intro {
   display: list-item;
   list-style: circle;
   padding-bottom: 5px;
@@ -182,4 +193,3 @@ li {
 .ui-menu-item:hover{
 	background:#83D0EF;
 }
-
