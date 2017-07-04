@@ -151,11 +151,17 @@ input {
   margin-top: 0px;
 }
 
+li {
+  display: list-item;
+  list-style: circle;
+  padding-bottom: 5px;
+}
+
 
 /*styling for the full autocomplete menu*/
 .ui-menu{
 	background: white;
-	width:20%;
+	width: 20%;
 }
 /*styling for individual autocomplete options*/
 .ui-menu-item{

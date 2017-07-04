@@ -13,8 +13,6 @@ var seedTruck = {
 };
 
 
-
-
 function DBpushTruck(){
     //an object to hold the info to be pushed
     // var truck = seedTruck;
@@ -184,12 +182,34 @@ $("#search-button").on("click", function(event) {
     var sortedDB = truckSort(DB, "Cuisine Type");
 
     console.log(sortedDB);
+    displayTrucks(DB);
   });
-
 });
 
 
+$('#search-button').on('click', function(event){
+    event.preventDefault();
+    // DBsearch();
+    var trucks = DBsearch();
+    displayTrucks(trucks);
+    // console.log(DBsearch());
+});
+// iterates through the objects 
+function displayTrucks(trucks){
 
+  var truckContainer = $(".trucks-list");
+  truckContainer.empty();
+  for(var key in trucks){
+     // targeting attr 'savory', 'url', 'image url'
+    var divHolder = $('<div class="truck-list"><div class="truck-list-image-container"><img src="'+trucks[key]["Image URL"]+'" class="truck-list-image" alt="standard food truck"></div><div class="truck-list-detail"><div class="truck-list-name">' + trucks[key]["Truck Name (DBA)"] + '</div><div class="truck-list-cuisine">'+ trucks[key]["Cuisine Type"]+'</div></div></div>');
+    // divHolder.append(trucks[key]["Truck Name (DBA)"]);
+    // divHolder.append(trucks[key]["Cuisine Type"]);
+    // divHolder.append(trucks[key]["URL"]);
+    // divHolder.append(trucks[key]["Facebook"]);
+    // divHolder.append(trucks[key]["Twitter"]);
+    truckContainer.append(divHolder);
+  }
+}
 
 
 // database.ref().on("child_added", function(snapshot) {
