@@ -210,6 +210,43 @@ function displayTrucks(trucks){
 }
 
 
+// //Get input values
+
+//   var reportDate = null;
+//   var reportTime = null;
+//   var reportLocation = null;
+//   var reportName = null;
+//   var reportCuisine = null;
+
+//   $('#submit-button').on('click', function(event) {
+//     event.preventDefault(); 
+//     console.log("submit clicked");
+
+// // Getting values from text boxes
+//     reportDate = $("#add-date-seen").val().trim();
+//     reportTime = $("#add-time-seen").val().trim();
+//     reportLocation = $("#add-location").val().trim();
+//     reportName = $("#add-truck-name").val().trim();
+//     reportCuisine = $("#add-truck-cuisine").val().trim();   
+
+// // Console log input to verify it is captured
+//     console.log(reportDate);
+//     console.log(reportTime);
+//     console.log(reportLocation);
+//     console.log(reportName);
+//     console.log(reportCuisine);
+
+// // Clear out the text boxes after submit
+//   $("#add-date-seen").val("");
+//   $("#add-time-seen").val("");
+//   $("#add-location").val("");
+//   $("#add-truck-name").val("");
+//   $("#add-truck-cuisine").val("");
+
+// });
+
+
+
 // database.ref().on("child_added", function(snapshot) {
 //   //variables for easy access
 //   var obj = snapshot.val();
