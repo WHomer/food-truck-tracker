@@ -39,15 +39,15 @@
 					<!-- Google Map -->
 					<div class="col-md-9">
 						<div class="map-container">
-							<div id="map">	
+							<div id="map">
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div>
-							<div class="search-description"><ul><li>Click Search for a list of all food trucks</li>
-							<li>Search for trucks by using one or all of the search boxes</li>
-							<li>Click the map to zoom in closer</li>
+							<div class="search-description"><ul><li class="search-intro">Search for trucks by using one or all of the search boxes</li>
+							<li class="search-intro">Press Search for a list of all trucks</li>
+							<li class="search-intro">Click the map to zoom in</li>
 							</ul></div>
 							<!-- form inout for map search  -->
 							<form class="form">
@@ -57,16 +57,22 @@
 							  </div>
 							  <div class="form-group">
 							    <label for="truck-cuisine">Cuisine</label>
-							    <input type="text" class="form-control" id="truck-cuisine" placeholder="Latin">
+									<div class="dropdown">
+								    <button class="btn btn-default btn-dropdown dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><span class="dropdown-input" id="truck-cuisine">Cuisine Type</span>
+								    <span class="caret"></span></button>
+								    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="dropdownmenu">
+								    </ul>
+								  </div>
 							  </div>
-							  <div class="form-group">
+
+							  <!-- <div class="form-group">
 							    <label for="truck-time">Time</label>
 							    <input type="text" class="form-control" id="truck-time" placeholder="12:00">
 							  </div>
 							  <div class="form-group">
 							    <label for="truck-location">Location</label>
 							    <input type="text" class="form-control" id="truck-location" placeholder="Chicago">
-							  </div>
+							  </div> -->
 							  <button type="submit" class="btn btn-lg btn-success search-button" id="search-button">Search</button>
 							</form>
 						</div>
@@ -181,38 +187,32 @@
 					</div>
 				</div>
 			</div>
-					
+
 				<!-- end of search for truck -->
 		<div class="food-truck-reporting-container">
 			<div class="row">
-				<!-- Food truck festival image -->
-					<div class="col-md-8">
-							<img src="" class="FoodTruckImage">	
-							</div>
-						</div>
-					</div>
-						
 
 				<!-- start of add truck -->
 					<div class="panel panel-primary">
 					<div class="panel-heading">
 						Report a Food Truck
 					</div>
-					<div class="col-md-4">
+	
+					<div class="col-md-3">
 					<div class="add-truck-panel">
 						<form action="">
 							<div class="form-group">
 								<label for="truck-name">Truck Name: </label>
-								<input type="text" class="form-control" id="add-truck-name">
+								<input type="text" class="form-control" id="add-truck-name" placeholder="Enter Truck Name">
 							</div>
 							<div class="form-group">
 								<label for="truck-cuisine">Truck Cuisine: </label>
-								<input type="text" class="form-control" id="add-truck-cuisine">
+								<input type="text" class="form-control" id="add-truck-cuisine" placeholder="Select Truck Cuisine">
 							</div>
 							<div class="form-group">
 								<label for="truck-location">Where Last Seen:</label>
-								<input type="text" class="form-control" id="add-first-street" placeholder="Enter First Cross Street">
-								<input type="text" class="form-control" id="add-second-street" placeholder="Enter Second Cross Street">
+								<input type="text" class="form-control" id="add-location" placeholder="Choose Location">
+								
 							</div>
 							<div class="form-group">
 								<label for="truck-date">When Last Seen:</label>
