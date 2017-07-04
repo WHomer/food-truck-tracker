@@ -115,7 +115,7 @@ input {
 
 
 .lightbox {
- 	display: none; /*tempory */
+ 	display: block; /*tempory */
 	position: fixed;
 	z-index: 1;
 	padding-top: 100px;
@@ -135,6 +135,19 @@ input {
 	width: 90%;
 	height: 70%;
 	max-width: 1200px;
+}
+
+.lb-foodtruck-image {
+	max-width: 500px;
+	width: 100%;
+}
+
+.lb-foodtruck-detail{
+	padding-top: 10px;
+}
+
+.yelp-review {
+	padding-bottom: 10px;
 }
 
 .add-truck-panel {
