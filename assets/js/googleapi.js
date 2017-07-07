@@ -5,7 +5,8 @@ function initMap() {
     // scrollwheel: false,
     zoom: 12,
     center: new google.maps.LatLng(41.9106569, -87.645705),
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap', 
+    scrollwheel: false
   });
 
   var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
