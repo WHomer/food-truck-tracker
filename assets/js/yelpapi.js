@@ -1,5 +1,5 @@
 
-// to test this code use bash, go to the folder and enter "node yelpapi"
+// to test this code use bash, go to the folder and enter "node yelpA.jspi"
 'use strict';
 
 
@@ -21,10 +21,11 @@ yelp.accessToken(clientId, clientSecret).then(response => {
   const client = yelp.client(response.jsonBody.access_token);
 
 //Insert food truck name here
-client.reviews('babycakes-chicago').then(response => {
+client.reviews('the-fat-shallot-chicago').then(response => {
   console.log(response.jsonBody.reviews[0].text);
 }).catch(e => {
   console.log(e);
+$(".truck-list-detail").html(yelp);
 
 
 
