@@ -47,7 +47,7 @@ function DBsearch(){
       inputObj = retrieveInput();
       var allBlank = true;
       for (var prop in inputObj){
-        if(inputObj[prop]){
+        if(inputObj[prop]&&inputObj[prop]!="cuisine type"&&inputObj[prop]!="none"){
           allBlank = false;
           break;
         }
@@ -129,7 +129,7 @@ function setAutocompleteTags(){
 }
 
 function createDropdownTags(callback){
-    var dropdownTags = [];
+    var dropdownTags = [""];
     database.ref("trucks/").once("value", function(snapshot) {
       for(var key in snapshot.val()){
         if(dropdownTags.indexOf(snapshot.val()[key]["Cuisine Type"])==-1){
@@ -143,6 +143,9 @@ function createDropdownTags(callback){
 }
 
 function setHTMLDropdownTags(dropdownTags){
+  $("#dropdownmenu").append('<li role="presentation"><a class="dropdownmenuitem" role="menuitem" tabindex="-1">None</a></li>');
+  $("#dropdownmenu").append('<div class="dropdown-divider"></div>');
+
   for(var index in dropdownTags){
       $("#dropdownmenu").append('<li role="presentation"><a class="dropdownmenuitem" role="menuitem" tabindex="-1">'+dropdownTags[index]+'</a></li>');
     }
@@ -219,7 +222,7 @@ function displayTrucks(trucks){
 //   var reportCuisine = null;
 
 //   $('#submit-button').on('click', function(event) {
-//     event.preventDefault(); 
+//     event.preventDefault();
 //     console.log("submit clicked");
 
 // // Getting values from text boxes
@@ -227,7 +230,7 @@ function displayTrucks(trucks){
 //     reportTime = $("#add-time-seen").val().trim();
 //     reportLocation = $("#add-location").val().trim();
 //     reportName = $("#add-truck-name").val().trim();
-//     reportCuisine = $("#add-truck-cuisine").val().trim();   
+//     reportCuisine = $("#add-truck-cuisine").val().trim();
 
 // // Console log input to verify it is captured
 //     console.log(reportDate);
