@@ -239,8 +239,6 @@ function init() {
 //creates an onclick event for food truck containers
 function foodTruckClick(){
 	$('.truck-list').on('click', function(){
-		//display light box
-		$('.js-lightbox').css('display', 'block');
 		//get truck name from clicked content;
 			//var truck = (this.childNodes[3].childNodes[1].innerText);
 		var truck = $(this).find('.truck-list-name').text();
@@ -260,24 +258,28 @@ $('.js-lightbox-close').on('click', function(){
 function getLightboxContent(truck){
 	//search truckjson for truck object
 	DBsearch().then(function(trucks){
-		console.log(trucks);
-	})
-	for (var i = 0; i < truckjson.length; i++){
-		if (truck === truckjson[i]['Truck Name (DBA)']){
-			//store each variable
-			var truckName = truckjson[i]['Truck Name (DBA)'];
-			var truckCuisine = truckjson[i]['Cuisiine Type'];
-			var truckFacebook = truckjson[i]['Facebook'];
-			var truckImage = truckjson[i]['Image URL']
-			var truckSavory = truckjson[i]['Savory'];
-			var truckSweet = truckjson[i]['Sweet'];
-			var truckTwitter = truckjson[i]['Twitter'];
-			var truckURL = truckjson[i]['URL'];
-			//display each variable to lightbox
-			$('.js-lb-name').text(truckName);
-			$('.js-lb-image').attr('src', truckImage);
+		//loop through trucks object for correct truckk and retrieve data
+		for (var i = 0; i < Object.keys(trucks).length; i++){
+			var key = Object.keys(trucks)[i];
+			if (truck === trucks[key]['Truck Name (DBA)']){
+				//store each variable
+				var truckName = trucks[key]['Truck Name (DBA)'];
+				var truckCuisine = trucks[key]['Cuisine Type'];
+				var truckFacebook = trucks[key]['Facebook'];
+				var truckImage = trucks[key]['Image URL']
+				var truckSavory = trucks[key]['Savory'];
+				var truckSweet = trucks[key]['Sweet'];
+				var truckTwitter = trucks[key]['Twitter'];
+				var truckURL = trucks[key]['URL'];
+				//display each variable to lightbox
+				$('.js-lb-name').text(truckName);
+				$('.js-lb-image').attr('src', truckImage);
+				$('.js-lb-cuisine').text(truckCuisine);
+			}
 		}
-	}
+		//display light box
+		$('.js-lightbox').css('display', 'block');
+	})
 }
 
 

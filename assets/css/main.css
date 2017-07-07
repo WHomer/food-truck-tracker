@@ -46,7 +46,7 @@ label {
   background-color: #fff;
 }*/
 .lightbox {
- 	display: block; /*tempory */
+ 	display: none; /*tempory */
 	position: fixed;
 	z-index: 1;
 	padding-top: 100px;
@@ -79,8 +79,14 @@ label {
 	max-height: 40%;
 }
 
-.lb-foodtruck-detail{
-	
+.lb-social {
+	display: inline-block;
+}
+
+.lb-social img {
+	width: 70px;
+	padding-top: 25px;
+	padding-left: 10px;
 }
 
 .lightbox-truck {
@@ -89,7 +95,8 @@ label {
   margin: auto;
   padding: 0;
   width: 60%;
-  height: 70%;
+  height: 800px;
+  max-height: 70%;
   max-width: 1200px;
   color: #fff;
 }
