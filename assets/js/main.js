@@ -188,13 +188,26 @@ $("#search-button").on("click", function(event) {
 });
 
 
+// $('#search-button').on('click', function(event){
+//     event.preventDefault();
+//     // DBsearch();
+//     var trucks = DBsearch();
+//     displayTrucks(trucks);
+//     // console.log(DBsearch());
+// });
+
 $('#search-button').on('click', function(event){
     event.preventDefault();
+
     // DBsearch();
-    var trucks = DBsearch();
-    displayTrucks(trucks);
+    var trucks = DBsearch().then(function(trucks){
+      displayTrucks(trucks);
+      $("#truck-name").val("");
+      $("#truck-cuisine").text("Cuisine Type");
+    });
     // console.log(DBsearch());
 });
+
 // iterates through the objects
 function displayTrucks(trucks){
 
@@ -210,9 +223,67 @@ function displayTrucks(trucks){
     // divHolder.append(trucks[key]["Twitter"]);
     truckContainer.append(divHolder);
   }
+  foodTruckClick();
+}
+
+function init() {
+	//grab all trucks
+	DBsearch().then(function(trucks){
+		//display all trucks
+  	displayTrucks(trucks);
+	});
+	foodTruckClick();
 }
 
 
+//creates an onclick event for food truck containers
+function foodTruckClick(){
+	$('.truck-list').on('click', function(){
+		//get truck name from clicked content;
+			//var truck = (this.childNodes[3].childNodes[1].innerText);
+		var truck = $(this).find('.truck-list-name').text();
+		console.log(truck);
+		//populate data
+		getLightboxContent(truck);
+	})
+}
+
+//close button on the js-lightbox
+$('.js-lightbox-close').on('click', function(){
+	//close lightbox
+	$('.js-lightbox').css('display', 'none');
+})
+
+//gathers information about the truck
+function getLightboxContent(truck){
+	//search truckjson for truck object
+	DBsearch().then(function(trucks){
+		//loop through trucks object for correct truckk and retrieve data
+		for (var i = 0; i < Object.keys(trucks).length; i++){
+			var key = Object.keys(trucks)[i];
+			if (truck === trucks[key]['Truck Name (DBA)']){
+				//store each variable
+				var truckName = trucks[key]['Truck Name (DBA)'];
+				var truckCuisine = trucks[key]['Cuisine Type'];
+				var truckFacebook = trucks[key]['Facebook'];
+				var truckImage = trucks[key]['Image URL']
+				var truckSavory = trucks[key]['Savory'];
+				var truckSweet = trucks[key]['Sweet'];
+				var truckTwitter = trucks[key]['Twitter'];
+				var truckURL = trucks[key]['URL'];
+				//display each variable to lightbox
+				$('.js-lb-name').text(truckName);
+				$('.js-lb-image').attr('src', truckImage);
+				$('.js-lb-cuisine').text(truckCuisine);
+			}
+		}
+		//display light box
+		$('.js-lightbox').css('display', 'block');
+	})
+}
+
+
+init();
 // //Get input values
 
 //   var reportDate = null;

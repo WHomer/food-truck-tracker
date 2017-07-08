@@ -33,8 +33,8 @@ label {
   padding-bottom: 5px;
 }
 
-.lightbox {
-  display: none; /*tempory */
+/*.lightbox {
+  display: none; 
   position: fixed;
   z-index: 1;
   padding-top: 100px;
@@ -43,17 +43,62 @@ label {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: black;
+  background-color: #fff;
+}*/
+.lightbox {
+ 	display: none; /*tempory */
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: #676b77;
+	text-align: center;
+}
+
+.lb-image-container {
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+	border-radius: 50%;
+  	border: 3px solid black;
+	background-color: orange;
+	position: relative;
+}
+
+.lb-cuisine {
+	font-size: 2em;
+}
+
+.lb-foodtruck-image {
+	max-width: 300px;
+	width: 100%;
+	max-height: 40%;
+}
+
+.lb-social {
+	display: inline-block;
+}
+
+.lb-social img {
+	width: 70px;
+	padding-top: 25px;
+	padding-left: 10px;
 }
 
 .lightbox-truck {
   position: relative;
-  background-color: #fefefe;
+  background-color: black;
   margin: auto;
   padding: 0;
-  width: 90%;
-  height: 70%;
+  width: 60%;
+  height: 800px;
+  max-height: 70%;
   max-width: 1200px;
+  color: #fff;
 }
 
 .lightbox-close{
@@ -95,6 +140,8 @@ label {
 .search-button, .add-button {
   width: 100%;
   margin-bottom: 10px;
+  font-size: 24px;
+  font-style: normal;
 }
 
 .search-description {
@@ -180,27 +227,6 @@ label {
   text-align: center;
 }
 
-.lightbox {
- 	display: none; /*tempory */
-	position: fixed;
-	z-index: 1;
-	padding-top: 100px;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: black;
-}
-.lb-foodtruck-image {
-	max-width: 300px;
-	width: 100%;
-	max-height: 40%;
-}
-
-.lb-foodtruck-detail{
-	padding-top: 10px;
-}
 
 /*styling for the full autocomplete menu*/
 .ui-menu {
